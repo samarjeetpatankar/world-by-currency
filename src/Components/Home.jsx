@@ -1,5 +1,5 @@
-import React from 'react';
-import SearchBar from './SearchBar';
+import React from "react";
+import SearchBar from "./SearchBar";
 
 const Home = () => {
   return (
@@ -7,11 +7,9 @@ const Home = () => {
       <div className="text-center mt-8">
         <h1 className="text-4xl font-bold text-black ">World By Currency</h1>
       </div>
-      <SearchBar className="mt-4" />
+      <SearchBar />
     </div>
   );
 };
 
 export default Home;
-
-
