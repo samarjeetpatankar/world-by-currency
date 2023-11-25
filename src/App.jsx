@@ -1,13 +1,14 @@
-import SearchBar from "./Components/SearchBar";
+import Home from "./Components/Home";
 
 function App() {
   return (
     <>
-      <SearchBar />
+    <Home />
     </>
-  );
-}
+  ); 
+} 
 
 export default App;
 
 
+ 
