@@ -1,8 +1,24 @@
-# React + Vite
+# World By Currency React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Explore countries based on their currency with this React application. The app allows users to search for countries using a currency code, providing detailed information about each country.
 
-Currently, two official plugins are available:
+## Features
+- **Currency Search:** Enter a currency code (e.g., INR, EUR, USD) to discover countries that use that currency.
+- **Detailed Information:** View detailed information about each country, including its name, capital, region, and an image of the flag.
+- **Responsive Design:** The app is designed to be responsive, ensuring a seamless experience on various devices.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- React
+- Axios for API requests
+- Tailwind CSS for styling
+
+## Getting Started
+Follow these steps to run the app locally:
+
+1. Clone the repository: `git clone https://github.com/your-username/world-by-currency-react.git`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+4. Open your browser and navigate to [http://localhost:5173](http://localhost:5173)
+
+## API Used
+This app utilizes the [restcountries API](https://restcountries.com/#endpoints-currency) to fetch country data based on currency.
