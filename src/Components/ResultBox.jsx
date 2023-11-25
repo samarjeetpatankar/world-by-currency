@@ -15,11 +15,20 @@ const ResultBox = ({
     const fetchData = async () => {
       try {
         if (currencyCode) {
+          const lowercaseCode = currencyCode.toLowerCase();
+
           const response = await fetch(
-            `https://restcountries.com/v3.1/currency/${currencyCode}`
+            `https://restcountries.com/v3.1/currency/${lowercaseCode}`
           );
-          const data = await response.json();
-          setCountryData(data[0]);
+
+          if (response.ok) {
+            const data = await response.json();
+            setCountryData(data[0]);
+          } else {
+            console.error(
+              `Error fetching country data: ${response.statusText}`
+            );
+          }
         }
       } catch (error) {
         console.error("Error fetching country data:", error);
@@ -57,5 +66,3 @@ const ResultBox = ({
 };
 
 export default ResultBox;
-
-
