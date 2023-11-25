@@ -22,23 +22,21 @@ const ResultBox = ({ country, capital, imageUrl, currencyCode }) => {
   }, [currencyCode]);
 
   return (
-    <div className="max-w-md table mx-auto mt-8 bg-white rounded-md overflow-hidden shadow-md md:flex">
-      <div className="md:w-1/2">
-        {currencyData && (
+    <div>
+      {currencyData && (
+        <div className="bg-gray-200 p-4 rounded-md shadow-md w-64 h-80">
+          <div className="mb-4 h-48 overflow-hidden">
           <img
             className="object-cover w-full h-full"
             src={imageUrl}
             alt={`${country} Image`}
           />
-        )}
-      </div>
+          </div>
 
-      {currencyData && (
-        <div className="p-6 md:w-1/2">
-          <h2 className="text-2xl font-semibold mb-4">Name : {country}</h2>
-          <p className="text-gray-800">
-            Capital: {Array.isArray(capital) ? capital[0] : capital}
-          </p>
+          <div className="text-center">
+            <h2 className="text-gray-900 text-lg	">Name : {country}</h2>
+            <p className="text-gray-900 text-lg	">Capital : {capital}</p>
+          </div>
         </div>
       )}
     </div>
