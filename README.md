@@ -15,7 +15,7 @@ Explore countries based on their currency with this React application. The app a
 ## Getting Started
 Follow these steps to run the app locally:
 
-1. Clone the repository: `git clone https://github.com/your-username/world-by-currency-react.git`
+1. Clone the repository: `git clone https://github.com/samarjeetpatankar/world-by-currency`
 2. Install dependencies: `npm install`
 3. Start the development server: `npm run dev`
 4. Open your browser and navigate to [http://localhost:5173](http://localhost:5173)
