@@ -14,8 +14,6 @@ const SearchBar = () => {
     setLoading(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
       const response = await axios.get(
         `https://restcountries.com/v3.1/currency/${searchQuery}`
       );
@@ -79,3 +77,5 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+
+
