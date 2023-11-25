@@ -6,11 +6,13 @@ const ResultBox = ({ country, capital, imageUrl, currencyCode }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `https://restcountries.com/v3.1/currency/${currencyCode}`
-        );
-        const data = await response.json();
-        setCurrencyData(data[0]);
+        if (currencyCode) {
+          const response = await fetch(
+            `https://restcountries.com/v3.1/currency/${currencyCode}`
+          );
+          const data = await response.json();
+          setCurrencyData(data[0]);
+        }
       } catch (error) {
         console.error("Error fetching currency data:", error);
       }
@@ -20,8 +22,7 @@ const ResultBox = ({ country, capital, imageUrl, currencyCode }) => {
   }, [currencyCode]);
 
   return (
-    <div className="max-w-md mx-auto mt-8 bg-white rounded-md overflow-hidden shadow-md md:flex">
-    
+    <div className="max-w-md table mx-auto mt-8 bg-white rounded-md overflow-hidden shadow-md md:flex">
       <div className="md:w-1/2">
         {currencyData && (
           <img
@@ -31,8 +32,6 @@ const ResultBox = ({ country, capital, imageUrl, currencyCode }) => {
           />
         )}
       </div>
-
-     
 
       {currencyData && (
         <div className="p-6 md:w-1/2">
@@ -47,5 +46,3 @@ const ResultBox = ({ country, capital, imageUrl, currencyCode }) => {
 };
 
 export default ResultBox;
-
-

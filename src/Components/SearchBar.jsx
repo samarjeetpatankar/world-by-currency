@@ -35,7 +35,7 @@ const SearchBar = () => {
         <input
           className="py-2 pl-10 pr-10 border border-gray-300 rounded-md w-96 focus:outline-none focus:border-blue-500 text-center"
           type="text"
-          placeholder="Search by Currency INR, EUR"
+          placeholder="Search by Currency INR, EUR, USD"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -51,23 +51,23 @@ const SearchBar = () => {
       {error && <p className="text-red-500">{error}</p>}
 
       <div className="mt-4 flex flex-wrap justify-center">
-        {searchResults.map((result) => (
-          result.name && result.capital && result.flags ? (
-            <div key={result.cca3} className="m-2">
-              <ResultBox
-                country={result.name.common}
-                capital={result.capital[0]}
-                imageUrl={result.flags.png}
-                currencyCode={searchQuery}
-              />
-            </div>
-          ) : null
-        ))}
+        {searchResults &&
+          searchResults.map &&
+          searchResults.map((result) =>
+            result.name && result.capital && result.flags ? (
+              <div key={result.cca3} className="m-2">
+                <ResultBox
+                  country={result.name.common}
+                  capital={result.capital[0]}
+                  imageUrl={result.flags.png}
+                  currencyCode={searchQuery}
+                />
+              </div>
+            ) : null
+          )}
       </div>
     </div>
   );
 };
 
 export default SearchBar;
-
-
