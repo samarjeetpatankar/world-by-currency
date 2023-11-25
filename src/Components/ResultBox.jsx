@@ -22,19 +22,19 @@ const ResultBox = ({ country, capital, imageUrl, currencyCode }) => {
   }, [currencyCode]);
 
   return (
-    <div>
+    <div className="ml-2 mr-2 mb-1">
       {currencyData && (
-        <div className="bg-gray-200 p-4 rounded-md shadow-md w-64 h-80">
+        <div className="bg-gray-200 p-4 rounded-md shadow-md w-80 h-80">
           <div className="mb-4 h-48 overflow-hidden">
-          <img
-            className="object-cover w-full h-full"
-            src={imageUrl}
-            alt={`${country} Image`}
-          />
+            <img
+              className="object-cover w-full h-full"
+              src={imageUrl}
+              alt={`${country} Image`}
+            />
           </div>
 
           <div className="text-center">
-            <h2 className="text-gray-900 text-lg	">Name : {country}</h2>
+            <p className="text-gray-900 text-lg	">Name : {country}</p>
             <p className="text-gray-900 text-lg	">Capital : {capital}</p>
           </div>
         </div>
@@ -44,3 +44,4 @@ const ResultBox = ({ country, capital, imageUrl, currencyCode }) => {
 };
 
 export default ResultBox;
+

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import axios from "axios";
 import ResultBox from "./ResultBox";
 
 const SearchBar = () => {
@@ -13,16 +14,23 @@ const SearchBar = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      const response = await axios.get(
         `https://restcountries.com/v3.1/currency/${searchQuery}`
       );
-      const data = await response.json();
-      setSearchResults(data);
+      setSearchResults(response.data);
     } catch (error) {
       console.error("Error fetching search results:", error);
       setError("An error occurred while fetching data. Please try again.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
     }
   };
 
@@ -38,16 +46,16 @@ const SearchBar = () => {
           placeholder="Search by Currency INR, EUR, USD"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyUp={handleKeyPress}
         />
-        <button
-          className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md"
-          onClick={handleSearch}
-        >
-          Search
-        </button>
       </div>
 
-      {loading && <p>Loading...</p>}
+      {loading && (
+        <div>
+          <p>Loading...</p>
+        </div>
+      )}
+
       {error && <p className="text-red-500">{error}</p>}
 
       <div className="mt-4 flex flex-wrap justify-center">
