@@ -39,7 +39,7 @@ const SearchBar = () => {
           <FaSearch className="h-5 w-5 text-gray-500" />
         </div>
         <input
-          className="py-2 pl-10 pr-10 border border-gray-300 rounded-md w-96 focus:outline-none focus:border-blue-500 text-center"
+          className="py-3 pl-10 pr-10 border border-gray-300 rounded-md w-96 focus:outline-none focus:border-blue-500 text-center"
           type="text"
           placeholder="Search by Currency INR, EUR, USD"
           value={searchQuery}
@@ -67,6 +67,9 @@ const SearchBar = () => {
                   capital={result.capital[0]}
                   imageUrl={result.flags.png}
                   currencyCode={searchQuery}
+                  // population={result.population}
+                  // timezones={result.timezones}
+                  region={result.region}
                 />
               </div>
             ) : null
