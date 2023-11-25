@@ -46,11 +46,9 @@ const ResultBox = ({
             <p className="text-gray-950 text-2xl font-semibold">
               Capital: {capital}
             </p>
-            {/* <p className="text-gray-950 text-lg">Population: {population}</p> */}
             <p className="text-gray-950 text-2xl font-semibold">
               Region: {region}
             </p>
-            {/* <p className="text-gray-950 text-lg">Timezones: {timezones.join(', ')}</p> */}
           </div>
         </div>
       )}
@@ -59,3 +57,5 @@ const ResultBox = ({
 };
 
 export default ResultBox;
+
+

@@ -14,17 +14,22 @@ const SearchBar = () => {
     setLoading(true);
 
     try {
-      const response = await axios.get(
-        `https://restcountries.com/v3.1/currency/${searchQuery}`
-      );
-      setSearchResults(response.data);
+        // Convert searchQuery to lowercase
+        const lowercaseQuery = searchQuery.toLowerCase();
+
+        const response = await axios.get(
+            `https://restcountries.com/v3.1/currency/${lowercaseQuery}`
+        );
+
+        setSearchResults(response.data);
     } catch (error) {
-      console.error("Error fetching search results:", error);
-      setError("An error occurred while fetching data. Please try again.");
+        console.error("Error fetching search results:", error);
+        setError("An error occurred while fetching data. Please try again.");
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
+
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
