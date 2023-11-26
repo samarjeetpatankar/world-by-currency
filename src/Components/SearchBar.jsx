@@ -8,6 +8,7 @@ const SearchBar = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  
 
   const handleSearch = async () => {
     setError(null);
@@ -35,6 +36,11 @@ const SearchBar = () => {
     }
   };
 
+  // Loading Skeleton
+  const LoadingSkeleton = () => (
+    <div className="animate-pulse p-4 rounded-md border border-gray-300 w-96 h-16 mt-4"></div>
+  );
+
   return (
     <div className="flex justify-center items-center mt-9 flex-col">
       <div className="relative flex items-center">
@@ -51,11 +57,7 @@ const SearchBar = () => {
         />
       </div>
 
-      {loading && (
-        <div>
-          <p>Loading...</p>
-        </div>
-      )}
+      {loading && <LoadingSkeleton />}
 
       {error && <p className="text-red-500">{error}</p>}
 
@@ -70,7 +72,7 @@ const SearchBar = () => {
                   capital={result.capital[0]}
                   imageUrl={result.flags.png}
                   currencyCode={searchQuery}
-                  // population={result.population}
+                  population={result.population}
                   // timezones={result.timezones}
                   region={result.region}
                 />

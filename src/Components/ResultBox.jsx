@@ -11,6 +11,22 @@ const ResultBox = ({
 }) => {
   const [countryData, setCountryData] = useState(null);
 
+  const getAllCountries = async () => {
+    try {
+      const response = await fetch("https://restcountries.com/v3.1/all");
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      } else {
+        console.error(`Error fetching all countries: ${response.statusText}`);
+        return null;
+      }
+    } catch (error) {
+      console.error("Error fetching all countries:", error);
+      return null;
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,29 +56,31 @@ const ResultBox = ({
 
   return (
     <div className="ml-2 mr-2 mb-1">
-      {country && capital && imageUrl && (
-        <div className="bg-gray-300 p-4 rounded-md shadow-md border border-gray-400 w-80 h-96">
-          <div className="mb-4 h-48 overflow-hidden border-b-2 border-gray-400">
-            <img
-              className="object-cover w-full h-full"
-              src={imageUrl}
-              alt={`${country} Image`}
-            />
-          </div>
-
-          <div className="text-center">
-            <p className="text-gray-950 text-2xl font-bold			">Name: {country}</p>
-            <p className="text-gray-950 text-2xl font-semibold">
-              Capital: {capital}
-            </p>
-            <p className="text-gray-950 text-2xl font-semibold">
-              Region: {region}
-            </p>
-          </div>
+      <div className="bg-gray-300 p-4 rounded-md shadow-md border border-gray-400 w-80 h-96">
+        <div className="mb-4 h-48 overflow-hidden border-b-2 border-gray-400">
+          <img
+            className="object-cover w-full h-full"
+            src={imageUrl}
+            alt={`${country} Image`}
+          />
         </div>
-      )}
+
+        <div className="text-center">
+          <p className="text-gray-950 text-xl font-bold">Name: {country}</p>
+          <p className="text-gray-950 text-xl font-semibold">
+            Capital: {capital}
+          </p>
+          <p className="text-gray-950 text-xl font-semibold">
+            Region: {region}
+          </p>
+          <p className="text-gray-950 text-xl font-semibold">
+            Population: {population}
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default ResultBox;
+
