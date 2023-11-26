@@ -11,9 +11,7 @@ const Home = () => {
       <main >
         <SearchBar />
       </main>
-      <footer className="text-center text-gray-500 mt-6">
-        <p>&copy; 2023 World By Currency. All rights reserved.</p>
-      </footer>
+      
     </div>
   );
 };
