@@ -33,7 +33,7 @@ const ResultBox = ({
       } catch (error) {
         console.error("Error fetching country data:", error);
       } finally {
-        // Set a delay of 2 seconds before showing the actual result box
+        //  delay of 2 seconds before showing the actual result box
         setTimeout(() => {
           setShowSkeleton(false);
         }, 2000);
@@ -79,9 +79,10 @@ export default ResultBox;
 
 const LoadingSkeleton = () => (
   <div className="bg-gray-300 p-4 rounded-md shadow-md border border-gray-400 w-80 h-96 animate-pulse">
-    <div className="mb-4 h-48 bg-gray-400"></div>
+    <div className="mb-4 h-48 bg-gray-400 rounded-md"></div>
     <div className="text-center">
-      <p className="text-gray-500 text-xl font-bold">Loading...</p>
+      <div className="bg-gray-400 h-6 w-20 mb-2 mx-auto rounded-md"></div>
+      <div className="bg-gray-400 h-4 w-32 mx-auto rounded-md"></div>
     </div>
   </div>
 );
