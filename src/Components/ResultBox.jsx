@@ -82,7 +82,9 @@ const LoadingSkeleton = () => (
     <div className="mb-4 h-48 bg-gray-400 rounded-md"></div>
     <div className="text-center">
       <div className="bg-gray-400 h-6 w-20 mb-2 mx-auto rounded-md"></div>
-      <div className="bg-gray-400 h-4 w-32 mx-auto rounded-md"></div>
+      <div className="bg-gray-400 h-4 w-32 mb-2 mx-auto rounded-md"></div>
+      <div className="bg-gray-400 h-4 w-32 mb-2 mx-auto rounded-md"></div>
+      <div className="bg-gray-400 h-4 w-32 mb-2 mx-auto rounded-md"></div>
     </div>
   </div>
 );  
