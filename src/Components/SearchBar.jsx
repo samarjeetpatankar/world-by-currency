@@ -6,28 +6,20 @@ import ResultBox from "./ResultBox";
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const handleSearch = async () => {
     setError(null);
-    setLoading(true);
 
     try {
       const lowercaseQuery = searchQuery.toLowerCase();
-
       const response = await axios.get(
         `https://restcountries.com/v3.1/currency/${lowercaseQuery}`
       );
-
-      setTimeout(() => {
-        setSearchResults(response.data);
-        setLoading(false);
-      }, 2000);
+      setSearchResults(response.data);
     } catch (error) {
       console.error("Error fetching search results:", error);
       setError("An error occurred while fetching data. Please try again.");
-      setLoading(false);
     }
   };
 
@@ -52,8 +44,6 @@ const SearchBar = () => {
           onKeyUp={handleKeyPress}
         />
       </div>
-
-      {loading && <p className="text-gray-500">Loading...</p>}
 
       {error && <p className="text-red-500">{error}</p>}
 
@@ -80,6 +70,3 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
-
-
-
