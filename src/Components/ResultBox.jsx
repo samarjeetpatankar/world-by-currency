@@ -36,7 +36,7 @@ const ResultBox = ({
         //  delay of 2 seconds before showing the actual result box
         setTimeout(() => {
           setShowSkeleton(false);
-        }, 2000);
+        }, 1500);
       }
     };
 
