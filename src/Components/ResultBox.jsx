@@ -1,6 +1,29 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const formatPopulation = (population) => {
+  const formattedPopulation = new Intl.NumberFormat().format(population);
+  if (population >= 1e9) {
+    return `${(population / 1e9).toFixed(2)} billion`;
+  } else if (population >= 1e6) {
+    return `${(population / 1e6).toFixed(2)} million`;
+  } else {
+    return formattedPopulation;
+  }
+};
+
+const LoadingSkeleton = () => (
+  <div className="bg-gray-300 p-4 rounded-md shadow-md border border-gray-400 w-80 h-96 animate-pulse">
+    <div className="mb-4 h-48 bg-gray-400 rounded-md"></div>
+    <div className="text-center">
+      <div className="bg-gray-400 h-6 w-20 mb-2 mx-auto rounded-md"></div>
+      <div className="bg-gray-400 h-4 w-32 mb-2 mx-auto rounded-md"></div>
+      <div className="bg-gray-400 h-4 w-32 mb-2 mx-auto rounded-md"></div>
+      <div className="bg-gray-400 h-4 w-32 mb-2 mx-auto rounded-md"></div>
+    </div>
+  </div>
+);
+
 const ResultBox = ({
   country,
   capital,
@@ -33,7 +56,7 @@ const ResultBox = ({
       } catch (error) {
         console.error("Error fetching country data:", error);
       } finally {
-        //  delay of 2 seconds before showing the actual result box
+        // Delay of 1.5 seconds before showing the actual result box
         setTimeout(() => {
           setShowSkeleton(false);
         }, 1500);
@@ -66,7 +89,7 @@ const ResultBox = ({
               Region: {region}
             </p>
             <p className="text-gray-950 text-xl font-semibold">
-              Population: {population}
+              Population: {formatPopulation(population)}
             </p>
           </div>
         </div>
@@ -76,15 +99,3 @@ const ResultBox = ({
 };
 
 export default ResultBox;
-
-const LoadingSkeleton = () => (
-  <div className="bg-gray-300 p-4 rounded-md shadow-md border border-gray-400 w-80 h-96 animate-pulse">
-    <div className="mb-4 h-48 bg-gray-400 rounded-md"></div>
-    <div className="text-center">
-      <div className="bg-gray-400 h-6 w-20 mb-2 mx-auto rounded-md"></div>
-      <div className="bg-gray-400 h-4 w-32 mb-2 mx-auto rounded-md"></div>
-      <div className="bg-gray-400 h-4 w-32 mb-2 mx-auto rounded-md"></div>
-      <div className="bg-gray-400 h-4 w-32 mb-2 mx-auto rounded-md"></div>
-    </div>
-  </div>
-);  

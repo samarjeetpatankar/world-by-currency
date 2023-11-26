@@ -13,9 +13,7 @@ const SearchBar = () => {
 
     try {
       const lowercaseQuery = searchQuery.toLowerCase();
-      const response = await axios.get(
-        `https://restcountries.com/v3.1/currency/${lowercaseQuery}`
-      );
+      const response = await axios.get(`https://restcountries.com/v3.1/currency/${lowercaseQuery}`);
       setSearchResults(response.data);
     } catch (error) {
       console.error("Error fetching search results:", error);
