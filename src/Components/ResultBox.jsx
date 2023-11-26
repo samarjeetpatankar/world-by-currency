@@ -11,22 +11,6 @@ const ResultBox = ({
 }) => {
   const [countryData, setCountryData] = useState(null);
 
-  const getAllCountries = async () => {
-    try {
-      const response = await fetch("https://restcountries.com/v3.1/all");
-      if (response.ok) {
-        const data = await response.json();
-        return data;
-      } else {
-        console.error(`Error fetching all countries: ${response.statusText}`);
-        return null;
-      }
-    } catch (error) {
-      console.error("Error fetching all countries:", error);
-      return null;
-    }
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -83,4 +67,5 @@ const ResultBox = ({
 };
 
 export default ResultBox;
+
 

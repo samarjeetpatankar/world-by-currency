@@ -8,7 +8,6 @@ const SearchBar = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
 
   const handleSearch = async () => {
     setError(null);
@@ -21,11 +20,13 @@ const SearchBar = () => {
         `https://restcountries.com/v3.1/currency/${lowercaseQuery}`
       );
 
-      setSearchResults(response.data);
+      setTimeout(() => {
+        setSearchResults(response.data);
+        setLoading(false);
+      }, 2000);
     } catch (error) {
       console.error("Error fetching search results:", error);
       setError("An error occurred while fetching data. Please try again.");
-    } finally {
       setLoading(false);
     }
   };
@@ -35,11 +36,6 @@ const SearchBar = () => {
       handleSearch();
     }
   };
-
-  // Loading Skeleton
-  const LoadingSkeleton = () => (
-    <div className="animate-pulse p-4 rounded-md border border-gray-300 w-96 h-16 mt-4"></div>
-  );
 
   return (
     <div className="flex justify-center items-center mt-9 flex-col">
@@ -57,7 +53,7 @@ const SearchBar = () => {
         />
       </div>
 
-      {loading && <LoadingSkeleton />}
+      {loading && <p className="text-gray-500">Loading...</p>}
 
       {error && <p className="text-red-500">{error}</p>}
 
@@ -73,7 +69,6 @@ const SearchBar = () => {
                   imageUrl={result.flags.png}
                   currencyCode={searchQuery}
                   population={result.population}
-                  // timezones={result.timezones}
                   region={result.region}
                 />
               </div>
@@ -85,5 +80,6 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+
 
 
