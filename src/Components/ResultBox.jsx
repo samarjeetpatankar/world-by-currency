@@ -85,4 +85,4 @@ const LoadingSkeleton = () => (
       <div className="bg-gray-400 h-4 w-32 mx-auto rounded-md"></div>
     </div>
   </div>
-);
+);  
